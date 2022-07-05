@@ -1,0 +1,99 @@
+<h1>Règles du jeu</h1>
+
+<h2 id="global">Aperçu</h2>
+<ul>
+  <li>Il s'agit d'un jeu de simulation de batailles pour 2-4 joueurs</li>
+  <li>Les joueurs s'affrontent, chacun pour soit ou en équipe, pour détruire leur(s) adversaire(s) ou remplir les objectifs fixés par le scénario</li>
+  <li>Les joueurs jouent chacun leur tour, dans un ordre défini au début de la partie</li>
+  <li>Les tours s'enchaînent jusqu'à ce qu'un seul camp soit encore en vie, ou jusqu'à ce que les objectifs du scénario soit atteint. Le camp survivant est le gagnant. Dans le cas d'un scénario, le scénario précisera les conditions de victoire.</li>
+  <li>La durée d'une partie varie de XX minutes à YY heures, en fonction du nombre de joueurs et des forces en présence</li>
+  <li>Lien vers la <a routerLink="universe">description de l'univers du jeu</a></li>
+</ul>
+
+<h2 id="turnDefinition">Déroulement d'un tour</h2>
+<ul>
+  <li>Le joueur dont c'est le tour peut jouer avec toutes ses figurines</li>
+  <li>Les étapes d'un tour sont :
+    <ol>
+      <li><a href="#startOfTurn">Début de tour</a></li>
+      <li><a href="#movements">Mouvements</a></li>
+      <li><a href="#actions">Actions</a></li>
+      <li><a href="#endOfTurn">Fin de tour</a></li>
+    </ol>
+  </li>
+  <li>Le joueur doit effectuer chaque étape avec toutes ses unités, dans l'ordre qu'il souhaite, avant de passer à l'étape suivante.</li>
+</ul>
+
+<h2 id="startOfTurn">Début de tour</h2>
+Rien pour le moment
+
+<h2 id="movements">Mouvements</h2>
+<ul>
+  <li>Un hexagone de la carte contient 12 emplacements. Chaque figurine occupe un nombre d'emplacement indiqué sur sa carte d'unité</li>
+  <li>Si un hexagone ne contient pas assez d'emplacement libre pour accomoder une figurine, celle-ci ne peut pas se déplacer sur cette hexagone</li>
+  <li>Pour déplacer une figurine, le joueur peut la déplacer d'un nombre d'hexagone compris entre 0 et la valeur de mouvement de la figurine indiquée sur sa carte d'unité</li>
+  <li>Un déplacement est valide s'il existe un chemin d'hexagones où la figurine peut se déplacer entre son départ et sa destination</li>
+  <li>les figurines se déplacent individuellement. Si plusieurs figurines de même type sont sur le même hexagone de départ, il suffit qu'il existe un chemin valide pour 1 figurine, et que l'hexagone d'arrivée puisse les accomoder toutes pour qu'elles puissent toutes effectuer le déplacement (elle peuvent se déplacer à la queue-leu-leu, l'une après l'autre)</li>
+  <li>Le joueur active peut déplacer toutes ses unités, dans l'ordre qu'il souhaite</li>
+  <li>Une fois déplacée, une figurine ne peut plus se déplacer durant cette étape de mouvements, même si elel n'a pas utilisé toute sa valeur de mouvement</li>
+  <i>Une fois que toutes les figurines du joueur se sont déplacées (ou ont choisi de rester immobiles), l'étape de mouvement se termine</i>
+</ul>
+
+<h2 id="actions">Actions</h2>
+<ul>
+  <li>Chaque figurine possède, sur sa carte d'unité, une liste d'actions qu'elle peut effectuer (<a href="#actions">Actions</a>)</li>
+  <li>Les actions sont majoritairement le fait d'utiliser une arme que possède l'unité (<a href="attackActions">Actions d'attaque</a>), mais peuvent aussi constituer en divers autres effets (<a href="otherActions">Autres actions</a>)</li>
+  <li>Chaque action coûte un certain nombre de point d'action pour être utilisée. Certaines actions peuvent être conditionnées, ne pouvant être effectuées que dans certaines circonstances</li>
+  <li>Chaque unité du joueur actif commence cette étape d'actions avec un nombre de point d'action égal à son nombre de point d'action indiqué sur sa carte d'unité</li>
+  <li>Tant qu'il reste assez de point d'action à une unité pour payer une action, elle peut l'effectuer</li>
+  <li>Une unité effectue ses actions dans l'ordre qu'elle souhaite.</li>
+  <li>Le joueur doit effectuer toutes les actions qu'il souhaite effectuer avec une unité avant d'effectuer des action avec une autre unité. Une fois qu'une action a été effectuée avec une unité, les unités qui ont déjà précédement effectuées des actions ne peuvent plus en faire, même s'il leur reste assez de points d'actions</li>
+  <i>Le joueur peut effectuer des actions avec ses unités dans l'ordre qu'il souhaite</i>
+  <li>Une fois que toutes les figurines du joueur ont fait leurs actions (ou ont choisi de ne rien faire), l'étape d'action se termine</li>
+</ul>
+
+<h2 id="endOfTurn">Fin de tour</h2>
+Rien pour le moment
+
+<h2 id="attackActions">Actions d'attaque</h2>
+<p>La résolution d'une action d'attaque s'effectue en 5 sous-étapes:</p>
+<dl>
+  <dt>Choix de l'hexagone ciblé</dt>
+  <dd>L'action d'attaque possède une portée minimale et une portée maximale. L'attaquant doit désigner un hexagone qui doit être à une distance de l'unité effectuant l'action comprise entre la portée minimale et la portée maximale</dd>
+  <dt>Détermination de l'unité ciblée</dt>
+  <dd>3 types de ciblages sont possibles pour les actions d'attaques, déterminé par l'icone sur l'action d'attaque :
+    <ul>
+      <li><i class="fa-solid fa-eye"></i>: Choississez une unité cible dans l'hexagone ciblé. Si différents types d'unités, des unités avec différents points de vie, ou des unités de différentes armées sont présentent dans l'hexagone ciblé, le joueur à qui appartient l'unité choisit lance un dé de défense. S'il obtient un bouclier, il peut changer la cible de l'attaque à une autre unité présente sur l'hexagone (pas forcément une unité à lui). Sinon, l'unité choisie est l'unité ciblée.</li>
+      <li><i class="fa-solid fa-eye-slash"></i>: Lancer un D12 pour déterminer l'unité touchée. Si le D12 indique un emplacement vide de l'hexagone, l'attaque échoue et s'arrête là.</li>
+      <li><i class="fa-solid fa-location-crosshairs"></i>: L'attaquant choisit toujours l'unité ciblée dans l'hexagone ciblé</li>
+    </ul>
+  </dd>
+  <dt>Détermination de la puissance de l'attaque</dt>
+  <dd>
+    <ul>
+      <li>La puissance d'une attaque s'exprime en nombre de crânes obtenus</li>
+      <li>Chaque action d'attaque a une puissance d'attaque sous la forme X Dés + Y, ou X et Y peuvent être nuls</li>
+      <li>Le joueur attaquant lance X dés d'attaques, note le nombre de crânes obtenus, et y ajoute Y. Le nombre obtenu est la puissance de l'attaque</li>
+    </ul>
+  </dd>
+  <dt>Détermination de la puissance de la défense</dt>
+  <dd>
+    <ul>
+      <li>La puissance de défense s'exprime en nombre de boucliers obtenus</li>
+      <li>Chaque unité a une puissance de défense sous la forme X Dés + Y, ou X et Y peuvent être nuls</li>
+      <li>Le joueur défenseur lance X dés de défense, note le nombre de bouclier obtenus, et y ajoute Y. Le nombre obtenu est la puissance de la défense</li>
+    </ul>
+  </dd>
+  <dt>Résolution de l'attaque</dt>
+  <dd>
+    <ul>
+      <li>Si la puissance de la défense est supérieur ou égal à la puissance de l'attaque, l'unité ciblée ne subit aucun dégat</li>
+      <li>Dans le cas contraire, la figurine ciblée subit un nombre de dégats égal à la différence entre la puissance de l'attaque et la puissance de la défense</li>
+      <li>Si la figurine ciblée a un nombre de dégat supérieur ou égal à sa vie, elle est détruite et est retirée du champs de bataille. Les blessures excédentaires sont perdues</li>
+      <li>Les dégats infligés à une unité restent indéfiniment sur cette unité</li>
+    </ul>
+  </dd>
+</dl>
+
+<h2 id="otherActions">Autres actions</h2>
+Détaillées dans les cartes d'unités pour le moment.

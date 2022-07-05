@@ -1,0 +1,23 @@
+<h3>{{unit.name}}</h3>
+<div>
+  <span class="unitStat"><i class="fa-solid fa-shoe-prints"></i> : {{unit.movement}}</span>
+  <span class="unitStat"><i class="fa-solid fa-heart"></i> : {{unit.hp}}</span>
+  <span class="unitStat"><i class="fa-solid fa-shield"></i> :
+    <span *ngIf="unit.defenseDice && unit.automaticDefense">{{unit.defenseDice}} <i class="fa-solid fa-dice"></i> + {{unit.automaticDefense}}</span>
+    <span *ngIf="unit.defenseDice && !unit.automaticDefense">{{unit.defenseDice}} <i class="fa-solid fa-dice"></i></span>
+    <span *ngIf="!unit.defenseDice && unit.automaticDefense">{{unit.automaticDefense}}</span>
+  </span>
+  <span class="unitStat"><i class="fa-solid fa-hand"></i> : {{unit.actions}}</span>
+</div>
+<h4 *ngIf="unit.attackActions.length">Actions d'attaque</h4>
+<attack-action *ngFor="let attackAction of unit.attackActions"
+               class="actions"
+               [attackAction]="attackAction.action"
+               [actionCost]="attackAction.cost"
+></attack-action>
+<h4 *ngIf="unit.otherActions.length">Autres actions</h4>
+<other-action *ngFor="let otherAction of unit.otherActions"
+              class="actions"
+              [otherAction]="otherAction.action"
+              [actionCost]="otherAction.cost"
+></other-action>

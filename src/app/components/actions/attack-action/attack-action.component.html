@@ -1,0 +1,14 @@
+<h5>{{attackAction.name}} - {{actionCost}} PA</h5>
+<div>
+  <span class="actionStat"><i class="fa-solid fa-arrows-left-right"></i> :
+    <span *ngIf="attackAction.minRange === attackAction.maxRange">{{attackAction.minRange}}</span>
+    <span *ngIf="attackAction.minRange !== attackAction.maxRange">{{attackAction.minRange}} - {{attackAction.maxRange}}</span>
+  </span>
+  <span class="actionStat"><i class="fa-solid fa-hand-fist"></i> :
+    <span *ngIf="attackAction.attackDie && attackAction.automaticSkulls">{{attackAction.attackDie}} <i class="fa-solid fa-dice"></i> + {{attackAction.automaticSkulls}}</span>
+    <span *ngIf="attackAction.attackDie && !attackAction.automaticSkulls">{{attackAction.attackDie}} <i class="fa-solid fa-dice"></i></span>
+    <span *ngIf="!attackAction.attackDie && attackAction.automaticSkulls">{{attackAction.automaticSkulls}}</span>
+  </span>
+  <span class="actionStat"><i class="fa-solid fa-bullseye"></i> : <i class="fa-solid" [ngClass]="{'fa-eye':attackAction.targetingType == 'targeted', 'fa-dice':attackAction.targetingType == 'random', 'fa-location-crosshairs':attackAction.targetingType == 'sniper'}"></i></span>
+</div>
+{{attackAction.condition}}
