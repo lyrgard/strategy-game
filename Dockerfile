@@ -1,4 +1,5 @@
-FROM node:17-alpine
+### STAGE 1:BUILD ###
+FROM node:17-alpine AS build
 
 WORKDIR /strategyGame
 
@@ -8,7 +9,11 @@ RUN npm install
 
 # Install remaining parts (frequent changes)
 COPY . ./
-RUN npm run build
+RUN npm run build --prod
 
-EXPOSE 3000
-ENTRYPOINT ["npm", "start"]
+### STAGE 2:RUN ###
+FROM httpd:latest
+
+COPY --from=build /strategyGame/dist/strategyGame /usr/local/apache2/htdocs/
+
+EXPOSE 80

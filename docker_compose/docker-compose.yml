@@ -1,8 +1,8 @@
 version: '3.8'
 
 services:
-    ffbeequip:
+    strategy-game:
         image: lyrgard/strategy-game:latest
         restart: always
         ports:
-          - 3000:3000
+          - 3000:80
